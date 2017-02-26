@@ -946,13 +946,9 @@ class core extends common {
 						// Sinon traitement des données de sortie qui requiert qu'aucune notice ne soit présente
 						else {
 							// Enregistrement des données
+							// TODO Démo
 							if($output['state'] === true) {
-								$this->setData([$module->getData()]);
-								$this->saveData();
-							}
-							// Notification
-							if($output['notification']) {
-								$_SESSION[$output['state'] ? 'ZWII_NOTIFICATION_SUCCESS' : 'ZWII_NOTIFICATION_ERROR'] = $output['notification'];
+								$_SESSION['ZWII_NOTIFICATION_ERROR'] = 'Enregistrement impossible dans la version de démonstration';
 							}
 							// Redirection
 							if($output['redirect']) {
