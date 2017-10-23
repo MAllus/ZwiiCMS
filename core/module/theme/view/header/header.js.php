@@ -37,7 +37,7 @@ $("input, select").on("change", function() {
     }
     var themeHeaderTitle = $("#themeHeaderTitle").val();
     if(themeHeaderTitle) {
-        css += "header .container{margin:auto;background-image:url('<?php echo helper::baseUrl(false); ?>site/file/source/" + themeHeaderTitle + "');width:" + $("#themeHeaderTitleImageWidth").val() + ";height:" + $("#themeHeaderTitleImageHeight").val() + ";border-radius:" + $("#themeHeaderTitleImageRadius").val() + ";box-shadow:" + $("#themeHeaderTitleImageShadow").val() + ";position:absolute;" + $("#themeHeaderTitleImagePosition").val() + "}";
+        css += "header .container{margin:auto;max-width:" + $("#themeHeaderTitleImageWidth").val() + "px;max-height:" + $("#themeHeaderTitleImageHeight").val() + "px;border-radius:" + $("#themeHeaderTitleImageRadius").val() + ";box-shadow:" + $("#themeHeaderTitleImageShadow").val() + ";position:absolute;" + $("#themeHeaderTitleImagePosition").val() + "}";
     }
 	// Marge
 	if($("#themeHeaderMargin").is(":checked")) {
