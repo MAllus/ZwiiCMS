@@ -8,8 +8,10 @@
 	<?php $layout->showMetaDescription(); ?>
 	<?php $layout->showFavicon(); ?>
 	<?php $layout->showVendor(); ?>
-	<link rel="stylesheet" href="<?php echo helper::baseUrl(false); ?>core/layout/common.css">
-	<link rel="stylesheet" href="<?php echo helper::baseUrl(false); ?>site/data/theme.css?<?php echo md5(json_encode($this->getData(['theme']))); ?>">
+    <link rel="stylesheet" href="<?php echo helper::baseUrl(false); ?>core/layout/common.css">
+    <link rel="stylesheet" href="<?php echo helper::baseUrl(false); ?>core/vendor/tinymce/plugins/codesample/css/prism.css">
+    <link rel="stylesheet" href="<?php echo helper::baseUrl(false); ?>site/data/theme.css?<?php echo md5(json_encode($this->getData(['theme']))); ?>">
+    <link rel="stylesheet" href="<?php echo helper::baseUrl(false); ?>site/data/perso.css">
 </head>
 <body>
 <?php $layout->showStyle(); ?>
@@ -25,22 +27,20 @@
 	</nav>
 <?php endif; ?>
 <?php if($this->getData(['theme', 'header', 'position']) === 'body'): ?>
-	<!-- Bannière dans le fond du site -->
-    <header>
-         <?php if ($this->getData(['theme', 'header', 'title']) != NULL): ?>
-            <div class="container">
-                <a href="<?php echo helper::baseUrl(false); ?>"><img src="<?php echo helper::baseUrl(false).'site/file/source/'.$this->getData(['theme', 'header', 'title']); ?>" ></a>
-            </div>
-		<?php elseif(
-			$this->getData(['theme', 'header', 'textHide']) === false
-			// Affiche toujours le titre de la bannière pour l'édition du thème
-			OR ($this->getUrl(0) === 'theme' AND $this->getUrl(1) === 'header')
-		): ?>
-			<div class="container">
-				<span><?php echo $this->getData(['config', 'title']); ?></span>
-            </div>
-		<?php endif; ?>
-    </header>
+    <!-- Bannière dans le fond du site -->
+    <a href="<?php echo helper::baseUrl(false); ?>" title="Home">
+        <header>
+		    <?php if(
+			    $this->getData(['theme', 'header', 'textHide']) === false
+    			// Affiche toujours le titre de la bannière pour l'édition du thème
+	    		OR ($this->getUrl(0) === 'theme' AND $this->getUrl(1) === 'header')
+		    ): ?>
+			    <div class="container">
+				    <span><?php echo $this->getData(['config', 'title']); ?></span>
+    			</div>
+	    	<?php endif; ?>
+    	</header>
+    </a>
 <?php endif; ?>
 <?php if($this->getData(['theme', 'menu', 'position']) === 'body-second'): ?>
 	<!-- Menu dans le fond du site après la bannière -->
@@ -71,20 +71,16 @@
 		)
 	): ?>
 		<!-- Bannière dans le site -->
-        <header <?php if($this->getData(['theme', 'header', 'position']) === 'hide'): ?>class="displayNone"<?php endif; ?>>
-        <?php if ($this->getData(['theme', 'header', 'title']) != NULL): ?>
-            <div class="container">
-                <a href="<?php echo helper::baseUrl(false); ?>"><img src="<?php echo helper::baseUrl(false).'site/file/source/'.$this->getData(['theme', 'header', 'title']); ?>" ></a>
-            </div>
-		<?php elseif(
-			$this->getData(['theme', 'header', 'textHide']) === false
-			// Affiche toujours le titre de la bannière pour l'édition du thème
-			OR ($this->getUrl(0) === 'theme' AND $this->getUrl(1) === 'header')
-		): ?>
-			<div class="container">
-				<span><?php echo $this->getData(['config', 'title']); ?></span>
-            </div>
-		<?php endif; ?>
+		<header <?php if($this->getData(['theme', 'header', 'position']) === 'hide'): ?>class="displayNone"<?php endif; ?>>
+			<?php if(
+				$this->getData(['theme', 'header', 'textHide']) === false
+				// Affiche toujours le titre de la bannière pour l'édition du thème
+				OR ($this->getUrl(0) === 'theme' AND $this->getUrl(1) === 'header')
+			): ?>
+				<div class="container">
+					<span><?php echo $this->getData(['config', 'title']); ?></span>
+				</div>
+			<?php endif; ?>
 		</header>
 	<?php endif; ?>
 	<?php if(
