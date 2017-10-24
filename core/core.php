@@ -876,12 +876,16 @@ class core extends common {
 					$css .= 'header{margin:20px 20px 0 20px}';
 				}
 			}
-			$css .= 'header{background-color:' . $colors['normal'] . ';height:' . $this->getData(['theme', 'header', 'height']) . ';line-height:' . $this->getData(['theme', 'header', 'height']) . ';text-align:' . $this->getData(['theme', 'header', 'textAlign']) . '}';
+			$css .= 'header{background-color:' . $colors['normal'] . ';height:' . $this->getData(['theme', 'header', 'height']) . ';line-height:' . $this->getData(['theme', 'header', 'height']) . ';text-align:' . $this->getData(['theme', 'header', 'textAlign']) . ';position:relative}';
 			if($themeHeaderImage = $this->getData(['theme', 'header', 'image'])) {
 				$css .= 'header{background-image:url("../file/source/' . $themeHeaderImage . '");background-position:' . $this->getData(['theme', 'header', 'imagePosition']) . ';background-repeat:' . $this->getData(['theme', 'header', 'imageRepeat']) . '}';
 			}
 			$colors = helper::colorVariants($this->getData(['theme', 'header', 'textColor']));
-			$css .= 'header span{color:' . $colors['normal'] . ';font-family:"' . str_replace('+', ' ', $this->getData(['theme', 'header', 'font'])) . '",sans-serif;font-weight:' . $this->getData(['theme', 'header', 'fontWeight']) . ';text-transform:' . $this->getData(['theme', 'header', 'textTransform']) . '}';
+            $css .= 'header span{color:' . $colors['normal'] . ';font-family:"' . str_replace('+', ' ', $this->getData(['theme', 'header', 'font'])) . '",sans-serif;font-weight:' . $this->getData(['theme', 'header', 'fontWeight']) . ';text-transform:' . $this->getData(['theme', 'header', 'textTransform']) . '}';
+            if ($themeHeaderTitle = $this->getData(['theme', 'header', 'title'])) {
+                $css .= 'header .container{max-width:'.$this->getData(['theme', 'header', 'titleImageWidth']).'px;max-height:'.$this->getData(['theme', 'header', 'titleImageHeight']).'px;border-radius:'.$this->getData(['theme', 'header', 'titleImageRadius']).';box-shadow:'.$this->getData(['theme', 'header', 'titleImageShadow']).';position:absolute;'.$this->getData(['theme', 'header', 'titleImagePosition']).'}';
+                $css .= 'header span{display:none;}';
+            }
 			// Menu
 			$colors = helper::colorVariants($this->getData(['theme', 'menu', 'backgroundColor']));
 			$css .= 'nav, nav li > a{background-color:' . $colors['normal'] . '}';
