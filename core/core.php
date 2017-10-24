@@ -838,7 +838,12 @@ class core extends common {
 		if(file_exists('site/data/theme.css') === false) {
 			file_put_contents('site/data/theme.css', '');
 			chmod('site/data/theme.css', 0644);
-		}
+        }
+        // Créer le fichier perso.css
+        if(file_exists('site/data/perso.css') === false) {
+            file_put_contents('site/data/perso.css', '');
+            chmod('site/data/perso.css', 0644);
+        }
 		// Check la version
 		$cssVersion = preg_split('/\*+/', file_get_contents('site/data/theme.css'));
 		if(empty($cssVersion[1]) OR $cssVersion[1] !== md5(json_encode($this->getData(['theme'])))) {
