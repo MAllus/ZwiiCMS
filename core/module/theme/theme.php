@@ -272,8 +272,6 @@ class theme extends common {
 		if($this->isPost()) {
 			$this->setData(['theme', 'menu', [
 				'backgroundColor' => $this->getInput('themeMenuBackgroundColor'),
-                'textColor' => $this->getInput('themeMenuTextColor'),
-                'textColorHover' => $this->getInput('themeMenuTextColorHover'),
 				'fontWeight' => $this->getInput('themeMenuFontWeight'),
 				'height' => $this->getInput('themeMenuHeight'),
 				'loginLink' => $this->getInput('themeMenuLoginLink'),
@@ -317,8 +315,7 @@ class theme extends common {
 			$this->setData(['theme', 'site', [
 				'radius' => $this->getInput('themeSiteRadius'),
 				'shadow' => $this->getInput('themeSiteShadow'),
-				'width' => $this->getInput('themeSiteWidth'),
-				'backgroundColor' => $this->getInput('themeSiteBackgroundColor')
+				'width' => $this->getInput('themeSiteWidth')
 			]]);
 			// Valeurs en sortie
 			$this->addOutput([

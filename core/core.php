@@ -292,10 +292,8 @@ class common {
 			'link' => [
 				'textColor' => 'rgba(71, 123, 184, 1)'
 			],
-            'menu' => [
-                'backgroundColor' => 'rgba(62, 107, 159, 1)',
-                'textColor' => 'rgba(253, 253, 253, 1)',
-                'textColorHover' => 'rgba(253, 253, 253, 1)',
+			'menu' => [
+				'backgroundColor' => 'rgba(62, 107, 159, 1)',
 				'fontWeight' => 'normal',
 				'height' => '15px 10px',
 				'loginLink' => true,
@@ -304,8 +302,7 @@ class common {
 				'textAlign' => 'left',
 				'textTransform' => 'none'
 			],
-            'site' => [
-                'backgroundColor' => 'rgba(253, 253, 253, 1)',
+			'site' => [
 				'width' => '960px'
 			],
 			'text' => [
@@ -850,12 +847,11 @@ class core extends common {
 			$colors = helper::colorVariants($this->getData(['theme', 'body', 'backgroundColor']));
 			$css .= 'body{background-color:' . $colors['normal'] . ';font-family:"' . str_replace('+', ' ', $this->getData(['theme', 'text', 'font'])) . '",sans-serif}';
 			if($themeBodyImage = $this->getData(['theme', 'body', 'image'])) {
-			$css .= 'body{background-image:url("../file/source/' . $themeBodyImage . '");background-position:' . $this->getData(['theme', 'body', 'imagePosition']) . ';background-attachment:' . $this->getData(['theme', 'body', 'imageAttachment']) . ';background-size:' . $this->getData(['theme', 'body', 'imageSize']) . ';background-repeat:' . $this->getData(['theme', 'body', 'imageRepeat']) . '}';
+				$css .= 'body{background-image:url("../file/source/' . $themeBodyImage . '");background-position:' . $this->getData(['theme', 'body', 'imagePosition']) . ';background-attachment:' . $this->getData(['theme', 'body', 'imageAttachment']) . ';background-size:' . $this->getData(['theme', 'body', 'imageSize']) . ';background-repeat:' . $this->getData(['theme', 'body', 'imageRepeat']) . '}';
 			}
 			// Site
 			$css .= '.container{max-width:' . $this->getData(['theme', 'site', 'width']) . '}';
-            $colors = helper::colorVariants($this->getData(['theme', 'site', 'backgroundColor']));
-            $css .= '#site{background-color:' . $colors['normal'] . ';border-radius:' . $this->getData(['theme', 'site', 'radius']) . ';box-shadow:' . $this->getData(['theme', 'site', 'shadow']) . ' #212223}';
+			$css .= '#site{border-radius:' . $this->getData(['theme', 'site', 'radius']) . ';box-shadow:' . $this->getData(['theme', 'site', 'shadow']) . ' #212223}';
 			$colors = helper::colorVariants($this->getData(['theme', 'button', 'backgroundColor']));
 			$css .= '.speechBubble,.button,button[type=\'submit\'],.pagination a,input[type=\'checkbox\']:checked + label:before,input[type=\'radio\']:checked + label:before,.helpContent{background-color:' . $colors['normal'] . ';color:' . $colors['text'] . '!important}';
 			$css .= '.tabTitle.current,.helpButton span{color:' . $colors['normal'] . '}';
@@ -887,13 +883,11 @@ class core extends common {
 			$colors = helper::colorVariants($this->getData(['theme', 'header', 'textColor']));
 			$css .= 'header span{color:' . $colors['normal'] . ';font-family:"' . str_replace('+', ' ', $this->getData(['theme', 'header', 'font'])) . '",sans-serif;font-weight:' . $this->getData(['theme', 'header', 'fontWeight']) . ';text-transform:' . $this->getData(['theme', 'header', 'textTransform']) . '}';
 			// Menu
-            $colors = helper::colorVariants($this->getData(['theme', 'menu', 'backgroundColor']));
+			$colors = helper::colorVariants($this->getData(['theme', 'menu', 'backgroundColor']));
 			$css .= 'nav, nav li > a{background-color:' . $colors['normal'] . '}';
-            $colorText = helper::colorVariants($this->getData(['theme', 'menu', 'textColor']));
-			$css .= 'nav a,#toggle span{color:' . $colorText['normal'] . '!important}';
-            $colorText = helper::colorVariants($this->getData(['theme', 'menu', 'textColorHover']));
-			$css .= 'nav a:hover{background-color:' . $colors['darken'] . ';color:' . $colorText['normal'] . '!important}';
-			$css .= 'nav a.target,nav a.active{background-color:' . $colors['veryDarken'] . ';color:' . $colorText['normal'] . '!important}';
+			$css .= 'nav a,#toggle span{color:' . $colors['text'] . '!important}';
+			$css .= 'nav a:hover{background-color:' . $colors['darken'] . '}';
+			$css .= 'nav a.target,nav a.active{background-color:' . $colors['veryDarken'] . '}';
 			$css .= '#menu{text-align:' . $this->getData(['theme', 'menu', 'textAlign']) . '}';
 			if($this->getData(['theme', 'menu', 'margin'])) {
 				if(

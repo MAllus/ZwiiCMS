@@ -16,29 +16,22 @@
 		<div class="col12">
 			<div class="block">
 				<h4><?php echo helper::translate('Couleurs'); ?></h4>
-                <div class="row">
-					<div class="col3">
-						<?php echo template::text('themeSiteBackgroundColor', [
-							'class' => 'colorPicker',
-							'label' => 'Fond',
-							'value' => $this->getData(['theme', 'site', 'backgroundColor'])
-						]); ?>
-					</div>
-					<div class="col3">
+				<div class="row">
+					<div class="col4">
 						<?php echo template::text('themeTitleTextColor', [
 							'class' => 'colorPicker',
 							'label' => 'Titres',
 							'value' => $this->getData(['theme', 'title', 'textColor'])
 						]); ?>
 					</div>
-					<div class="col3">
+					<div class="col4">
 						<?php echo template::text('themeButtonBackgroundColor', [
 							'class' => 'colorPicker',
 							'label' => 'Boutons',
 							'value' => $this->getData(['theme', 'button', 'backgroundColor'])
 						]); ?>
 					</div>
-					<div class="col3">
+					<div class="col4">
 						<?php echo template::text('themeLinkTextColor', [
 							'class' => 'colorPicker',
 							'label' => 'Liens',
