@@ -18,7 +18,7 @@ $("input, select").on("change", function() {
 	var headerFont = $("#themeHeaderFont").val();
 	var css = "@import url('https://fonts.googleapis.com/css?family=" + headerFont + "');";
 	// Couleurs, image, alignement et hauteur de la bannière
-	css += "header{background-color:" + $("#themeHeaderBackgroundColor").val() + ";text-align:" + $("#themeHeaderTextAlign").val() + ";height:" + $("#themeHeaderHeight").val() + ";line-height:" + $("#themeHeaderHeight").val() + "}";
+	css += "header{background-color:" + $("#themeHeaderBackgroundColor").val() + ";text-align:" + $("#themeHeaderTextAlign").val() + ";height:" + $("#themeHeaderHeight").val() + ";line-height:" + $("#themeHeaderHeight").val() + ";position:relative}";
 	var themeHeaderImage = $("#themeHeaderImage").val();
 	if(themeHeaderImage) {
 		css += "header{background-image:url('<?php echo helper::baseUrl(false); ?>site/file/source/" + themeHeaderImage + "');background-repeat:" + $("#themeHeaderImageRepeat").val() + ";background-position:" + $("#themeHeaderImagePosition").val() + "}";
@@ -29,12 +29,16 @@ $("input, select").on("change", function() {
 	// Couleur, épaisseur et capitalisation du titre de la bannière
 	css += "header span{color:" + $("#themeHeaderTextColor").val() + ";font-family:'" + headerFont.replace("+", " ") + "',sans-serif;font-weight:" + $("#themeHeaderFontWeight").val() + ";text-transform:" + $("#themeHeaderTextTransform").val() + "}";
 	// Cache le titre de la bannière
-	if($("#themeHeaderTextHide").is(":checked")) {
-		$("header .container").hide();
+	if($("#themeHeaderTextHide").is(":checked") || $("#themeHeaderTitle").val()) {
+		$("header span").hide();
 	}
 	else {
-		$("header .container").show();
-	}
+		$("header span").show();
+    }
+    var themeHeaderTitle = $("#themeHeaderTitle").val();
+    if(themeHeaderTitle) {
+        css += "header .container{margin:auto;max-width:" + $("#themeHeaderTitleImageWidth").val() + "px;max-height:" + $("#themeHeaderTitleImageHeight").val() + "px;border-radius:" + $("#themeHeaderTitleImageRadius").val() + ";box-shadow:" + $("#themeHeaderTitleImageShadow").val() + ";position:absolute;" + $("#themeHeaderTitleImagePosition").val() + "}";
+    }
 	// Marge
 	if($("#themeHeaderMargin").is(":checked")) {
 		if(<?php echo json_encode($this->getData(['theme', 'menu', 'position']) === 'site-first'); ?>) {
@@ -100,6 +104,20 @@ $("#themeHeaderPosition").on("change", function() {
 	else {
 		$("#themeHeaderPositionOptions").slideUp(function() {
 			$("#themeHeaderMargin").prop("checked", false).trigger("change");
-		});
-	}
+        });
+}
+}).trigger("change");
+$("#themeHeaderTitle").on("change", function() {
+    if($(this).val() ) {
+        $("#themeHeaderTitleImageOptions").slideDown();
+        $("#themeHeaderTitleTextOptions").slideUp(function() {
+            $("#themeHeaderTitleImage").prop("checked", false).trigger("change");
+        });
+    }
+    else {
+        $("#themeHeaderImageTextOptions").slideDown();
+        $("#themeHeaderTitleImageOptions").slideUp(function() {
+             $("#themeHeaderTitleImage").prop("checked", false).trigger("change");
+        });
+    }
 }).trigger("change");
