@@ -17,7 +17,7 @@ Téléchargez puis décompressez l'archive sur votre serveur et c'est tout !
 * [Documentation de Zwii](https://github.com/remijean/ZwiiCMS/wiki/)
 * [Forum de Zwii](http://forum.zwiicms.com/)
 
-## Modfication par rapport au projet Original
+## Modification par rapport au projet Original
 
 * Ajout du lien cliquable sur le header
 * Modification de l'éditeur de text pour ckeditor
