@@ -102,13 +102,13 @@ class theme extends common {
     public static $imagePositionsInside = [
         'top: 0%; left:0%; transform: translate(0%, 0%);' => 'En haut à gauche',
         'top: 0%; left:50%; transform: translate(-50%, 0%);' => 'En haut au centre',
-        'top: 0%; left:100%; transform: translate(-100%, 0%);' => 'En haut à droite',
+        'top: 0%; right:0%; transform: translate(0%, 0%);' => 'En haut à droite',
         'top: 50%; left:0%; transform: translate(0%, -50%);' => 'Au milieu à gauche',
         'top: 50%; left:50%; transform: translate(-50%, -50%);' => 'Au milieu au centre',
-        'top: 50%; left:100%; transform: translate(-100%, -50%);' => 'Au milieu à droite',
+        'top: 50%; right:0%; transform: translate(0%, -50%);' => 'Au milieu à droite',
         'top: 100%; left:0%; transform: translate(-0%, -100%);' => 'En bas à gauche',
         'top: 100%; left:50%; transform: translate(-50%, -100%);' => 'En bas au milieu',
-        'top: 100%; left:100%; transform: translate(-100%, -100%);' => 'En bas à droite'
+        'top: 100%; right:0%; transform: translate(0%, -100%);' => 'En bas à droite'
     ];
 	public static $menuHeights = [
 		'5px 10px' => 'Très petite',

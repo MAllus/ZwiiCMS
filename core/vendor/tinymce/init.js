@@ -6,7 +6,7 @@ tinymce.init({
 	language: language,
     skin: "lightgray",
 	plugins: "advlist anchor autolink autoresize code colorpicker contextmenu fullscreen hr image imagetools legacyoutput link lists media paste preview searchreplace tabfocus table textcolor textpattern wordcount codesample visualblocks fullscreen preview emoticons charmap",
-	toolbar: "insertfile undo redo | styleselect | bold italic forecolor backcolor fontsizeselect | alignleft aligncenter alignright alignjustify subscript superscript | bullist numlist outdent indent | link image media emoticons charmap | codesample | visualblocks fullscreen preview",
+	toolbar: "insertfile undo redo | styleselect | bold italic forecolor backcolor fontsizeselect fontselect | alignleft aligncenter alignright alignjustify subscript superscript | bullist numlist outdent indent | link image media emoticons charmap | codesample | visualblocks fullscreen preview ",
 	body_class: "editor",
 	extended_valid_elements: "script[language|type|src]",
     contextmenu: "link image inserttable | cell row column deletetable",
