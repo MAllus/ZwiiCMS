@@ -838,6 +838,10 @@ class core extends common {
 		if(file_exists('site/data/theme.css') === false) {
 			file_put_contents('site/data/theme.css', '');
 			chmod('site/data/theme.css', 0644);
+        }
+		if(file_exists('site/data/perso.css') === false) {
+			file_put_contents('site/data/perso.css', '');
+			chmod('site/data/perso.css', 0644);
 		}
 		// Check la version
 		$cssVersion = preg_split('/\*+/', file_get_contents('site/data/theme.css'));
@@ -887,7 +891,7 @@ class core extends common {
 			$colors = helper::colorVariants($this->getData(['theme', 'header', 'textColor']));
 			$css .= 'header span{color:' . $colors['normal'] . ';font-family:"' . str_replace('+', ' ', $this->getData(['theme', 'header', 'font'])) . '",sans-serif;font-weight:' . $this->getData(['theme', 'header', 'fontWeight']) . ';text-transform:' . $this->getData(['theme', 'header', 'textTransform']) . '}';
             if ($themeHeaderTitle = $this->getData(['theme', 'header', 'title'])) { 
-                $css .= 'header .container{max-width:'.$this->getData(['theme', 'header', 'titleImageWidth']).'px;max-height:'.$this->getData(['theme', 'header', 'titleImageHeight']).'px;border-radius:'.$this->getData(['theme', 'header', 'titleImageRadius']).';box-shadow:'.$this->getData(['theme','header', 'titleImageShadow']).';position:absolute;'.$this->getData(['theme', 'header','titleImagePosition']).'}';
+                $css .= 'header .container{background-image:url("../file/source/' . $themeHeaderTitle . '");margin:auto;background-size:contain;background-repeat:no-repeat;width:100%;max-width:'.$this->getData(['theme', 'header', 'titleImageWidth']).'px;max-height:'.$this->getData(['theme', 'header', 'titleImageHeight']).'px;border-radius:'.$this->getData(['theme', 'header', 'titleImageRadius']).';box-shadow:'.$this->getData(['theme','header', 'titleImageShadow']).';position:absolute;'.$this->getData(['theme', 'header','titleImagePosition']).'}';
                 $css .= 'header span{display:none;}';
             }
             // Menu

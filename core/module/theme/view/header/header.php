@@ -144,7 +144,7 @@
 				<?php echo template::file('themeHeaderImage', [
 					'label' => 'Fond',
 					'lang' => $this->getData(['config', 'language']),
-					'type' => 1,
+					'type' => 2,
 					'value' => $this->getData(['theme', 'header', 'image'])
 				]); ?>
 				<div id="themeHeaderImageOptions" class="displayNone">
