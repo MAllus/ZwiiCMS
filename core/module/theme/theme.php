@@ -20,7 +20,8 @@ class theme extends common {
 		'header' => self::GROUP_ADMIN,
 		'index' => self::GROUP_ADMIN,
 		'menu' => self::GROUP_ADMIN,
-		'site' => self::GROUP_ADMIN
+        'site' => self::GROUP_ADMIN,
+        'title' => self::GROUP_ADMIN
 	];
 	public static $aligns = [
 		'left' => 'À gauche',
@@ -100,15 +101,15 @@ class theme extends common {
 		'bottom right' => 'En bas à droite'
     ];
     public static $imagePositionsInside = [
-        'top: 0%; left:0%; transform: translate(0%, 0%);' => 'En haut à gauche',
-        'top: 0%; left:50%; transform: translate(-50%, 0%);' => 'En haut au centre',
-        'top: 0%; right:0%; transform: translate(0%, 0%);' => 'En haut à droite',
-        'top: 50%; left:0%; transform: translate(0%, -50%);' => 'Au milieu à gauche',
-        'top: 50%; left:50%; transform: translate(-50%, -50%);' => 'Au milieu au centre',
-        'top: 50%; right:0%; transform: translate(0%, -50%);' => 'Au milieu à droite',
-        'top: 100%; left:0%; transform: translate(-0%, -100%);' => 'En bas à gauche',
-        'top: 100%; left:50%; transform: translate(-50%, -100%);' => 'En bas au milieu',
-        'top: 100%; right:0%; transform: translate(0%, -100%);' => 'En bas à droite'
+        'top:0%;left:0%;transform:translate(0%, 0%);' => 'En haut à gauche',
+        'top:0%;left:50%;transform:translate(-50%, 0%);' => 'En haut au centre',
+        'top:0%;left:100%;transform:translate(-100%, 0%);' => 'En haut à droite',
+        'top:50%;left:0%;transform:translate(0%, -50%);' => 'Au milieu à gauche',
+        'top:50%;left:50%;transform:translate(-50%, -50%);' => 'Au milieu au centre',
+        'top:50%;left:100%;transform:translate(-100%, -50%);' => 'Au milieu à droite',
+        'top:100%;left:0%;transform:translate(-0%, -100%);' => 'En bas à gauche',
+        'top:100%;left:50%;transform:translate(-50%, -100%);' => 'En bas au milieu',
+        'top:100%;left:100%;transform:translate(-100%, -100%);' => 'En bas à droite'
     ];
 	public static $menuHeights = [
 		'5px 10px' => 'Très petite',
@@ -226,6 +227,39 @@ class theme extends common {
 		]);
 	}
 
+    /**
+     * Options du titre
+     */
+    public function title() {
+        if($this->isPost()) {
+            $this->setData(['theme', 'titleH', [
+                'fontFamily' => $this->getInput('themeTitleHFontFamily'),
+                'fontStyle' => $this->getInput('themeTitleHFontStyle'),
+				'fontColor' => $this->getInput('themeTitleHFontColor'),
+                'fontTransform' => $this->getInput('themeTitleHFontTransform'),
+                'image' => $this->getInput('themeTitleHImage'),
+                'imagePosition' => $this->getInput('themeTitleHImagePosition'),
+                'imageWidth' => $this->getInput('themeTitleHImageWidth'),
+                'imageHeight' => $this->getInput('themeTitleHImageHeight'),
+                'imageShadow' => $this->getInput('themeTitleHImageShadow'),
+                'imageRadius' => $this->getInput('themeTitleHImageRadius')
+            ]]);
+			// Valeurs en sortie
+			$this->addOutput([
+				'notification' => 'Modifications enregistrées',
+				'redirect' => helper::baseUrl() . 'theme',
+				'state' => true
+			]);
+		}
+		// Valeurs en sortie
+		$this->addOutput([
+			'title' => 'Personnalisation du titre',
+			'vendor' => [
+				'tinycolorpicker'
+			],
+			'view' => 'title'
+		]);
+	}
 	/**
 	 * Options de la bannière
 	 */
@@ -234,8 +268,6 @@ class theme extends common {
 		if($this->isPost()) {
 			$this->setData(['theme', 'header', [
 				'backgroundColor' => $this->getInput('themeHeaderBackgroundColor'),
-				'font' => $this->getInput('themeHeaderFont'),
-				'fontWeight' => $this->getInput('themeHeaderFontWeight'),
 				'height' => $this->getInput('themeHeaderHeight'),
 				'image' => $this->getInput('themeHeaderImage'),
 				'imagePosition' => $this->getInput('themeHeaderImagePosition'),
@@ -243,15 +275,7 @@ class theme extends common {
 				'margin' => $this->getInput('themeHeaderMargin', helper::FILTER_BOOLEAN),
 				'position' => $this->getInput('themeHeaderPosition'),
 				'textAlign' => $this->getInput('themeHeaderTextAlign'),
-				'textColor' => $this->getInput('themeHeaderTextColor'),
-				'textHide' => $this->getInput('themeHeaderTextHide', helper::FILTER_BOOLEAN),
-                'textTransform' => $this->getInput('themeHeaderTextTransform'),
-                'title' => $this->getInput('themeHeaderTitle'),
-                'titleImagePosition' => $this->getInput('themeHeaderTitleImagePosition'),
-                'titleImageWidth' => $this->getInput('themeHeaderTitleImageWidth'),
-                'titleImageHeight' => $this->getInput('themeHeaderTitleImageHeight'),
-                'titleImageShadow' => $this->getInput('themeHeaderTitleImageShadow'),
-                'titleImageRadius' => $this->getInput('themeHeaderTitleImageRadius')
+				'textHide' => $this->getInput('themeHeaderTextHide', helper::FILTER_BOOLEAN)
 			]]);
 			// Valeurs en sortie
 			$this->addOutput([

@@ -849,7 +849,7 @@ class core extends common {
 			// Version
 			$css = '/*' . md5(json_encode($this->getData(['theme']))) . '*/';
 			// Import des polices de caractères
-			$css .= '@import url("https://fonts.googleapis.com/css?family=' . $this->getData(['theme', 'text', 'font']) . '|' . $this->getData(['theme', 'title', 'font']) . '|' . $this->getData(['theme', 'header', 'font']) . '");';
+			$css .= '@import url("https://fonts.googleapis.com/css?family=' . $this->getData(['theme', 'text', 'font']) . '|' . $this->getData(['theme', 'title', 'font']) . '|' . $this->getData(['theme', 'titleH', 'fontFamily']) . '");';
 			// Fond du site
 			$colors = helper::colorVariants($this->getData(['theme', 'body', 'backgroundColor']));
 			$css .= 'body{background-color:' . $colors['normal'] . ';font-family:"' . str_replace('+', ' ', $this->getData(['theme', 'text', 'font'])) . '",sans-serif}';
@@ -888,12 +888,14 @@ class core extends common {
 			if($themeHeaderImage = $this->getData(['theme', 'header', 'image'])) {
 				$css .= 'header{background-image:url("../file/source/' . $themeHeaderImage . '");background-position:' . $this->getData(['theme', 'header', 'imagePosition']) . ';background-repeat:' . $this->getData(['theme', 'header', 'imageRepeat']) . '}';
 			}
-			$colors = helper::colorVariants($this->getData(['theme', 'header', 'textColor']));
-			$css .= 'header span{color:' . $colors['normal'] . ';font-family:"' . str_replace('+', ' ', $this->getData(['theme', 'header', 'font'])) . '",sans-serif;font-weight:' . $this->getData(['theme', 'header', 'fontWeight']) . ';text-transform:' . $this->getData(['theme', 'header', 'textTransform']) . '}';
-            if ($themeHeaderTitle = $this->getData(['theme', 'header', 'title'])) { 
-                $css .= 'header .container{background-image:url("../file/source/' . $themeHeaderTitle . '");margin:auto;background-size:contain;background-repeat:no-repeat;width:100%;max-width:'.$this->getData(['theme', 'header', 'titleImageWidth']).'px;max-height:'.$this->getData(['theme', 'header', 'titleImageHeight']).'px;border-radius:'.$this->getData(['theme', 'header', 'titleImageRadius']).';box-shadow:'.$this->getData(['theme','header', 'titleImageShadow']).';position:absolute;'.$this->getData(['theme', 'header','titleImagePosition']).'}';
+            if ($themeTitleImage = $this->getData(['theme', 'titleH', 'image'])) { 
+                $css .= 'header .container{background-image:url("../file/source/' . $themeTitleImage . '");margin:auto;background-size:contain;background-repeat:no-repeat;width:100%;max-width:'.$this->getData(['theme', 'titleH', 'imageWidth']).'px;height:100%;max-height:'.$this->getData(['theme', 'titleH', 'imageHeight']).'px;border-radius:'.$this->getData(['theme', 'titleH', 'imageRadius']).';box-shadow:'.$this->getData(['theme', 'titleH', 'imageShadow']).';position:absolute;'.$this->getData(['theme', 'titleH','imagePosition']).'}';
                 $css .= 'header span{display:none;}';
+            } else {
+			    $colors = helper::colorVariants($this->getData(['theme', 'titleH', 'fontColor']));
+    			$css .= 'header span{color:' . $colors['normal'] . ';font-family:"' . str_replace('+', ' ', $this->getData(['theme', 'titleH', 'fontFamily'])) . '",sans-serif;font-weight:' . $this->getData(['theme', 'titleH', 'fontStyle']) . ';text-transform:' . $this->getData(['theme', 'titleH', 'fontTransform']) . '}';
             }
+
             // Menu
             $colors = helper::colorVariants($this->getData(['theme', 'menu', 'backgroundColor']));
 			$css .= 'nav, nav li > a{background-color:' . $colors['normal'] . '}';

@@ -14,11 +14,8 @@
  * Aperçu en direct
  */
 $("input, select").on("change", function() {
-	// Import des polices de caractères
-	var headerFont = $("#themeHeaderFont").val();
-	var css = "@import url('https://fonts.googleapis.com/css?family=" + headerFont + "');";
 	// Couleurs, image, alignement et hauteur de la bannière
-	css += "header{background-color:" + $("#themeHeaderBackgroundColor").val() + ";text-align:" + $("#themeHeaderTextAlign").val() + ";height:" + $("#themeHeaderHeight").val() + ";line-height:" + $("#themeHeaderHeight").val() + ";position:relative}";
+	var css = "header{background-color:" + $("#themeHeaderBackgroundColor").val() + ";text-align:" + $("#themeHeaderTextAlign").val() + ";height:" + $("#themeHeaderHeight").val() + ";line-height:" + $("#themeHeaderHeight").val() + ";position:relative}";
 	var themeHeaderImage = $("#themeHeaderImage").val();
 	if(themeHeaderImage) {
 		css += "header{background-image:url('<?php echo helper::baseUrl(false); ?>site/file/source/" + themeHeaderImage + "');background-repeat:" + $("#themeHeaderImageRepeat").val() + ";background-position:" + $("#themeHeaderImagePosition").val() + "}";
@@ -26,18 +23,12 @@ $("input, select").on("change", function() {
 	else {
 		css += "header{background-image:none}";
 	}
-	// Couleur, épaisseur et capitalisation du titre de la bannière
-	css += "header span{color:" + $("#themeHeaderTextColor").val() + ";font-family:'" + headerFont.replace("+", " ") + "',sans-serif;font-weight:" + $("#themeHeaderFontWeight").val() + ";text-transform:" + $("#themeHeaderTextTransform").val() + "}";
 	// Cache le titre de la bannière
-	if($("#themeHeaderTextHide").is(":checked") || $("#themeHeaderTitle").val()) {
+	if($("#themeHeaderTextHide").is(":checked")) {
 		$("header span").hide();
 	}
 	else {
 		$("header span").show();
-    }
-    var themeHeaderTitle = $("#themeHeaderTitle").val();
-    if(themeHeaderTitle) {
-        css += "header .container{background-image:url('<?php echo helper::baseUrl(false); ?>site/file/source/" + themeHeaderTitle + "');margin:auto;background-size:contain;background-repeat:no-repeat;width:100%;max-width:" + $("#themeHeaderTitleImageWidth").val() + "px;max-height:" + $("#themeHeaderTitleImageHeight").val() + "px;border-radius:" + $("#themeHeaderTitleImageRadius").val() + ";box-shadow:" + $("#themeHeaderTitleImageShadow").val() + ";position:absolute;" + $("#themeHeaderTitleImagePosition").val() + "}";
     }
 	// Marge
 	if($("#themeHeaderMargin").is(":checked")) {
@@ -106,14 +97,4 @@ $("#themeHeaderPosition").on("change", function() {
 			$("#themeHeaderMargin").prop("checked", false).trigger("change");
         });
 }
-}).trigger("change");
-$("#themeHeaderTitle").on("change", function() {
-    if($(this).val() ) {
-        $("#themeHeaderTitleImageOptions").slideDown();
-        $("#themeHeaderTitleTextOptions").slideUp();
-    }
-    else {
-        $("#themeHeaderTitleTextOptions").slideDown();
-        $("#themeHeaderTitleImageOptions").slideUp();
-    }
 }).trigger("change");

@@ -36,115 +36,22 @@
 						]); ?>
 					</div>
                 </div>
-                <div class="row">
-                    <div class="col6">
-        				<?php echo template::file('themeHeaderTitle', [
-		        			'label' => 'Remplacer le titre par une image',
-				        	'lang' => $this->getData(['config', 'language']),
-		        			'type' => 1,
-        					'value' => $this->getData(['theme', 'header', 'title'])
-				        ]); ?>
-                    </div>
-                    <div class="col6">
-	    			    <div id="themeHeaderPositionOptions" class="displayNone">
-    	    				<?php echo template::checkbox('themeHeaderMargin', true, 'Aligner la bannière avec le contenu', [
-	    	    				'checked' => $this->getData(['theme', 'header', 'margin'])
-		    	    		]); ?>
-                        </div>
-                    </div>
+	    		<div id="themeHeaderPositionOptions" class="displayNone">
+    	    		<?php echo template::checkbox('themeHeaderMargin', true, 'Aligner la bannière avec le contenu', [
+	    	    		'checked' => $this->getData(['theme', 'header', 'margin'])
+		    	    ]); ?>
                 </div>
 			</div>
 		</div>
     </div>
     <div class="row">
-        <div class="col6">
-            <div id="themeHeaderTitleImageOptions" class="displayNone" >
-			    <div class="block">
-				    <h4><?php echo helper::translate('Position de l\'image'); ?></h4>
-    				<div class="row">
-                        <div class="col6">
-                            <?php echo template::select('themeHeaderTitleImagePosition', $module::$imagePositionsInside, [
-								'label' => 'Position',
-								'selected' => $this->getData(['theme', 'header', 'titleImagePosition'])
-							]); ?>
-                        </div>
-                        <div class="col3">
-                            <?php echo template::text('themeHeaderTitleImageWidth', ['label' => 'Largeur',
-                                'value' => $this->getData(['theme', 'header', 'titleImageWidth'])
-                            ]); ?>
-                        </div>
-                        <div class="col3">
-                            <?php echo template::text('themeHeaderTitleImageHeight', ['label' => 'Hauteur',
-                                'value' => $this->getData(['theme', 'header', 'titleImageHeight'])
-                            ]); ?>
-                        </div>
-                    </div>
-		    	</div>
-			    <div class="block">
-				    <h4><?php echo helper::translate('Effet sur l\'image'); ?></h4>
-                    <div class="row">
-                        <div class="col6">
-                            <?php echo template::select('themeHeaderTitleImageShadow', $module::$shadows, [
-								'label' => 'Ombre',
-								'selected' => $this->getData(['theme', 'header', 'titleImageShadow'])
-							]); ?>
-                        </div>
-                        <div class="col6">
-                            <?php echo template::select('themeHeaderTitleImageRadius', $module::$radius, [
-								'label' => 'Arrondi des coins',
-								'selected' => $this->getData(['theme', 'header', 'titleImageRadius'])
-							]); ?>
-                        </div>
-	    			</div>
-		    	</div>
-            </div>
-            <div id="themeHeaderTitleTextOptions">
-			    <div class="block">
-				    <h4><?php echo helper::translate('Couleurs du texte'); ?></h4>
-    				<div class="row">
-	    				<div class="col6">
-		    				<?php echo template::text('themeHeaderBackgroundColor', [
-			    				'class' => 'colorPicker',
-				    			'label' => 'Fond',
-					    		'value' => $this->getData(['theme', 'header', 'backgroundColor'])
-						    ]); ?>
-    					</div>
-	    				<div class="col6">
-		    				<?php echo template::text('themeHeaderTextColor', [
-			    				'class' => 'colorPicker',
-				    			'label' => 'Texte',
-					    		'value' => $this->getData(['theme', 'header', 'textColor'])
-						    ]); ?>
-    					</div>
-	    			</div>
-		    	</div>
-			    <div class="block">
-				    <h4><?php echo helper::translate('Mise en forme du texte'); ?></h4>
-    				<div class="row">
-	    				<div class="col6">
-		    				<?php echo template::select('themeHeaderTextTransform', $module::$textTransforms, [
-			    				'label' => 'Caractères',
-				    			'selected' => $this->getData(['theme', 'header', 'textTransform'])
-					    	]); ?>
-    					</div>
-	    				<div class="col6">
-		    				<?php echo template::select('themeHeaderFontWeight', $module::$fontWeights, [
-			    				'label' => 'Style',
-				    			'selected' => $this->getData(['theme', 'header', 'fontWeight'])
-					    	]); ?>
-    					</div>
-	    			</div>
-		    	</div>
-    		</div>
-
-        </div>
 		<div class="col6">
 			<div class="block">
 				<h4><?php echo helper::translate('Image de Fond'); ?></h4>
 				<?php echo template::file('themeHeaderImage', [
 					'label' => 'Fond',
 					'lang' => $this->getData(['config', 'language']),
-					'type' => 2,
+					'type' => 1,
 					'value' => $this->getData(['theme', 'header', 'image'])
 				]); ?>
 				<div id="themeHeaderImageOptions" class="displayNone">
@@ -166,14 +73,17 @@
 						'checked' => $this->getData(['theme', 'header', 'textHide'])
 					]); ?>
 				</div>
-			</div>
-			<div class="block">
-				<h4><?php echo helper::translate('Police de caractères'); ?></h4>
-				<?php echo template::select('themeHeaderFont', $module::$fonts, [
-					'label' => 'Titre',
-					'selected' => $this->getData(['theme', 'header', 'font'])
-				]); ?>
-			</div>
-		</div>
+            </div>
+        </div>
+        <div class="col6">
+            <div class="block">
+                <h4><?php echo helper::translate('Couleur de fond'); ?></h4>
+                <?php echo template::text('themeHeaderBackgroundColor', [
+                    'class' => 'colorPicker',
+                    'label' => 'Texte',
+                    'value' => $this->getData(['theme', 'header', 'backgroundColor'])
+                ]); ?>  
+            </div>
+        </div>
 	</div>
 </form>

@@ -25,4 +25,4 @@ Téléchargez puis décompressez l'archive sur votre serveur et c'est tout !
 * Ajout d'un fichier css personnalisé (data/perso.css)
 * Modification de la barre de configuration pour l'afficher en permanence au top (position fixed)
 * Ajout de la personnalisation des couleurs de fond du site et de la police du menu
-* Ajout de la possibilité de rajouter une image a la place du nom du site
+* Création d'une page pour la personnalisation du titre du site

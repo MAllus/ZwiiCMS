@@ -32,4 +32,13 @@
 			]); ?>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col2 offset5">
+			<?php echo template::button('themeBack', [
+				'class' => 'buttonGrey',
+				'href' => helper::baseUrl(false).'theme/title',
+				'value' => 'Titre'
+			]); ?>
+		</div>
+	</div>
 <?php endif; ?>
